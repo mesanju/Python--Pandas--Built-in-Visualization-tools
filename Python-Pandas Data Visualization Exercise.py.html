@@ -1,0 +1,106 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# ___
+# 
+# Source:'http://www.pieriandata.com'
+# ___
+# # Pandas Data Visualization Exercise
+# 
+# 
+
+# In[34]:
+
+
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+df3 = pd.read_csv('df3') # Importing dataframe names df3
+get_ipython().run_line_magic('matplotlib', 'inline')
+
+
+# In[2]:
+
+
+df3.info() # Exploring dataset
+
+
+# In[3]:
+
+
+df3.head()
+
+
+# In[3]:
+
+
+# 1) Building Scatterplot of column b Vs a
+df3.plot.scatter(x="a", y="b", c="red", s=30, figsize=(12,3)) # x axis, y axis, color,dot size,figure size
+
+
+# In[7]:
+
+
+# 2) histogram of the 'a' column
+
+df3["a"].plot.hist()
+
+
+# In[9]:
+
+
+# 3) setting style to histogram
+
+plt.style.use('ggplot')
+df3["a"].plot.hist(alpha=0.5,bins=25)
+
+
+# In[13]:
+
+
+# 4) Boxplot comparing the a and b columns.
+
+df3[["a","b"]].plot.box()
+
+
+# In[14]:
+
+
+# 5) kde plot of the 'd' column 
+
+df3["d"].plot.kde()
+
+
+# In[17]:
+
+
+# Increasing linewidth and making the linestyle dashed.
+
+df3["d"].plot.kde(lw=3, ls="dashed")
+
+
+# In[33]:
+
+
+# 6) Area plot of all the columns for just the rows up to 30. 
+
+df3.iloc[0:30].plot.area(alpha=0.3)
+
+
+# In[32]:
+
+
+# 7) To get legend outside of the plot
+
+df3.iloc[0:30].plot.area(alpha=0.4)
+plt.legend(loc='center left', bbox_to_anchor=(1.0, 0.5))
+plt.show()
+
+
+# # Happy Coding!
+
+# In[ ]:
+
+
+
+
